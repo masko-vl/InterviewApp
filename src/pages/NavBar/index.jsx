@@ -1,4 +1,4 @@
-import KuvaLogo from "../media/KuvaLogo.png";
+import KuvaLogo from "../../media/KuvaLogo.png";
 
 function NavigationBar() {
   return (
