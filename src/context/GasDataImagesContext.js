@@ -1,5 +1,6 @@
 import React, { useEffect, createContext, useReducer} from 'react'
 import { getEvents } from '../sevices/getEvents';
+import { getCameras } from '../sevices/getCamaras';
 
 
 const Context = createContext({})
@@ -12,24 +13,41 @@ export const GasDataProvider = ({children}) => {
   );
 
   
-  const callData = async () => {
+  const callEvents = async () => {
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
 
         const response = await getEvents();
         
         if (response) {
-            dispatch({ type: 'GET_IMAGES', payload: response });
+            dispatch({ type: 'SET_IMAGES', payload: response });
         } else {
             console.error('No response received.');
         }
+        dispatch({ type: 'SET_IS_LOADING', payload: false });
   
   };
 
-  useEffect(() => {
-    callData();
-  }, []);
+  const callCameras = async (request, action) => {
+    dispatch({ type: 'SET_IS_LOADING', payload: true });
+  
+        const response = await getCameras();
+        
+        if (response) {
+            dispatch({ type: 'SET_CAMERAS', payload: response });
+        } else {
+            console.error('No response received.');
+        }
+        dispatch({ type: 'SET_IS_LOADING', payload: false });
+  
+  };
+
+
+  // useEffect(() => {
+  //   callData();
+  // }, []);
  
 
-  return <Context.Provider value={{data, dispatch}}>
+  return <Context.Provider value={{data, callEvents, callCameras, dispatch}}>
     {children}
   </Context.Provider>
 }
@@ -40,8 +58,20 @@ const  imagesReducer =(data, action) => {
     case 'GET_IMAGES': {
       return {...data, images: action.payload};
     }
+    case 'SET_IMAGES': {
+      return {...data, images: action.payload};
+    }
+
+    case 'SET_CAMERAS': {
+      return {...data, cameras: action.payload};
+    }
+
     case 'SET_FILTER_LEAK_GAS': {
       return {...data, filterGas: action.payload};;
+    }
+
+    case 'SET_IS_LOADING': {
+      return {...data, isLoading: action.payload};;
     }
 
     default: {
@@ -49,6 +79,6 @@ const  imagesReducer =(data, action) => {
     }
   }
 }
-const initialImages = {images: [],  filterGas: false};
+const initialImages = {images: [], cameras:[],  filterGas: false, isLoading: false};
 
 export default Context

@@ -5,14 +5,14 @@ function wait(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
-export const getEvents = async () => {
+export const getCameras = async () => {
 
-  return await axios.get(`${baseURL}/events`)
+  return await axios.get(`${baseURL}/camera`)
         .then( async (result) => {
           console.log('before waiting');
           await wait(3000)
-          console.log('afteeer'); 
-          return result.data.scanResults;
+          console.log('afteeer', result.data); 
+          return result.data;
         })
         .catch((error) => {
           new Error("Error while retrieving data")

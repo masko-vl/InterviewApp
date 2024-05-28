@@ -11,9 +11,9 @@ export const FilterToggle = () => {
   return (
     <div className="container ">
       <h4>Filter Gas Leak</h4>
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" onChange={handleChange} value={data.filterGas} />
-        <span class="slider"></span>
+        <span className="slider"></span>
       </label>
     </div>
   );

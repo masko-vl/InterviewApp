@@ -5,4 +5,6 @@ export const Layout = styled.div`
     display: flex;
     flex-direction: row;
     text-align: center;
+    background-color: #131313;
+    width:100%
 `;
