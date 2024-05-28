@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useReducer} from 'react'
+import React, { createContext, useReducer } from 'react';
 import { getEvents } from '../sevices/getEvents';
 import { getCameras } from '../sevices/getCamaras';
 
@@ -27,7 +27,7 @@ export const GasDataProvider = ({children}) => {
   
   };
 
-  const callCameras = async (request, action) => {
+  const callCameras = async () => {
     dispatch({ type: 'SET_IS_LOADING', payload: true });
   
         const response = await getCameras();
@@ -40,11 +40,6 @@ export const GasDataProvider = ({children}) => {
         dispatch({ type: 'SET_IS_LOADING', payload: false });
   
   };
-
-
-  // useEffect(() => {
-  //   callData();
-  // }, []);
  
 
   return <Context.Provider value={{data, callEvents, callCameras, dispatch}}>
@@ -55,9 +50,7 @@ export const GasDataProvider = ({children}) => {
 
 const  imagesReducer =(data, action) => {
   switch (action.type) {
-    case 'GET_IMAGES': {
-      return {...data, images: action.payload};
-    }
+   
     case 'SET_IMAGES': {
       return {...data, images: action.payload};
     }

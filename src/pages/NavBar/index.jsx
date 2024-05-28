@@ -43,26 +43,26 @@ const NavigationBar = () => {
       <nav>
         <CustomNavLink to="/">
           <span>
-            <i class="fa fa-home"></i>
+            <i className="fa fa-home"></i>
             Home
           </span>
         </CustomNavLink>
         <CustomNavLink to="/camara">
           <span>
-            <i class="fa fa-exclamation-triangle"></i>
+            <i className="fa fa-exclamation-triangle"></i>
             Gas Leak Detection
           </span>
         </CustomNavLink>
 
         <CustomNavLink to="/account">
           <span>
-            <i class="fa fa-user-circle-o"></i>
+            <i className="fa fa-user-circle-o"></i>
             Account
           </span>
         </CustomNavLink>
         <CustomNavLink to="/settings">
           <span>
-            <i class="fa fa-cog"></i>
+            <i className="fa fa-cog"></i>
             Settings
           </span>
         </CustomNavLink>

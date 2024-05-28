@@ -44,6 +44,7 @@ const CamaraResults = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [imagesToDisplay, setImagesToDisplay] = useState(images);
   const currentImage = imagesToDisplay[currentImageIndex];
+
   const handlePrevious = () => {
     const previousIndex = currentImageIndex > 0 ? currentImageIndex - 1 : 0;
     setCurrentImageIndex(previousIndex);
@@ -99,14 +100,14 @@ const CamaraResults = () => {
                   disabled={setCurrentImageIndex === 0 ? true : false}
                   onClick={handlePrevious}
                 >
-                  <i class="fa fa-chevron-left"></i>
+                  <i className="fa fa-chevron-left"></i>
                 </Button>
                 <Button
                   type="button"
                   disabled={currentImageIndex === imagesToDisplay.length - 1}
                   onClick={handleNext}
                 >
-                  <i class="fa fa-chevron-right"></i>
+                  <i className="fa fa-chevron-right"></i>
                 </Button>
               </div>
               {currentImage?.detectionsList.map((detection) => (
